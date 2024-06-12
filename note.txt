@@ -1,0 +1,46 @@
+  <div className="bg-white p-5 min-h-full w-2/5 rounded-2xl">
+       
+        <div className="flex flex-col gap-5">
+          <div className=" mt-8">
+            <ul className="flex flex-col gap-5 text-xl text-neutral">
+              <p>Shapes</p>
+                  <li onClick={() => setType('rec')} className="btn text-lg justify-start btn-secondary">
+                    <RiRectangleLine/>
+                    Rectangle
+                  </li>
+                  <li onClick={() => setType('cir')} className="btn btn-neutral text-lg justify-start">
+                    <RiCircleLine />
+                    Circle
+                  </li>
+                  <li onClick={() => setType('tri')} className="btn btn-neutral text-lg justify-start">
+                    <RiTriangleLine  />
+                    Triangle
+                  </li>
+                  <li>
+                    <label className="btn btn-ghost text-lg justify-start w-full">
+                    <input className="w-4 h-4" type="checkbox" name=""/>
+                    Fill Color
+                    </label>
+                  </li>
+            </ul>
+          </div>
+
+          <div>
+            <ul className="flex flex-col gap-5 text-xl text-neutral">
+              <p>Options</p>
+              <li onClick={() => setType('bru')} className="btn btn-neutral text-lg justify-start">
+                <RiBrushLine/>
+                Brush
+              </li>
+              <li onClick={() => setType('era')} className="btn btn-neutral text-lg justify-start">
+                <RiEraserLine />
+                Eraser
+              </li>
+              <li className="btn text-lg justify-start">
+             <input type="range" name="" id="" />
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
