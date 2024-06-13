@@ -1,9 +1,8 @@
 import { FaGear, FaUser } from "react-icons/fa6";
 import { FaMagic } from "react-icons/fa";
 import Setting from "../Setting/Setting";
-import { IoIosArrowDown } from "react-icons/io";
 
-const Navbar = ({expend,setExpend}) => {
+const Navbar = () => {
   return (
     <>
       <Setting />

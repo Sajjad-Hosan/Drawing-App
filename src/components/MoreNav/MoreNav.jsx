@@ -4,18 +4,16 @@ import {
   IoColorPaletteOutline,
 } from "react-icons/io5";
 import useAuth from "../../hooks/useAuth";
-import { FaT } from "react-icons/fa6";
 const MoreNav = () => {
   const { bottom, setSelectTool, fillRef, handleFill, fill } = useAuth();
   return (
     <>
       <div
         className={`absolute right-1 ${
-          bottom ? "bottom-28" : "-bottom-[16rem]"
+          bottom ? "bottom-20" : "-bottom-[16rem]"
         } z-20 transition-all duration-200`}
       >
         <ul className="flex flex-col gap-2 text-xl text-neutral items-center">
-          
           <li>
             <label
               htmlFor="fill"
@@ -55,12 +53,6 @@ const MoreNav = () => {
             }}
           >
             <IoColorPaletteOutline className="text-xl" />
-          </li>
-          <li
-            className={`btn  btn-circle btn-ghost text-xl flex tooltip tooltip-left`}
-            data-tip="Text"
-          >
-            <FaT className="text-xl" />
           </li>
         </ul>
       </div>

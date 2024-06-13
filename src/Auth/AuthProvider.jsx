@@ -4,7 +4,11 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const fillRef = useRef(null);
   // ------------------------
+  const [expend, setExpend] = useState(false);
   const [color, setColor] = useState(localStorage.getItem("color"));
+  const [background, setBackground] = useState(
+    localStorage.getItem("background")
+  );
   const [selectTool, setSelectTool] = useState("bru");
   const [fill, setFill] = useState(localStorage.getItem("fill"));
   const [width, setWidth] = useState(parseInt(localStorage.getItem("stroke")));
@@ -56,6 +60,10 @@ const AuthProvider = ({ children }) => {
     setOpa,
     back,
     setBack,
+    expend,
+    setExpend,
+    background,
+    setBackground,
   };
 
   return (

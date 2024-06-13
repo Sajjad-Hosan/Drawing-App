@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 const Body = () => {
@@ -11,6 +11,7 @@ const Body = () => {
     shape,
     setShape,
     eraser,
+    background,
   } = useAuth();
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
@@ -19,6 +20,12 @@ const Body = () => {
   const [prevMouseX, setPrevMouseX] = useState(null);
   const [prevMouseY, setPrevMouseY] = useState(null);
   const [snapshot, setSnapshot] = useState(null);
+
+  const setCanvasBackground = useCallback(() => {
+    const ctx = ctxRef.current;
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+  }, [background]);
   useEffect(() => {
     const canvas = canvasRef.current;
     ctxRef.current = canvas.getContext("2d");
@@ -39,53 +46,50 @@ const Body = () => {
         setCanvasBackground();
       });
     };
-  }, []);
+  }, [setCanvasBackground]);
 
-  const setCanvasBackground = () => {
-    const ctx = ctxRef.current;
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-  };
-
-  const startDraw = (e) => {
-    setIsDrawing(true);
-    setPrevMouseX(e.nativeEvent.offsetX);
-    setPrevMouseY(e.nativeEvent.offsetY);
-    const ctx = ctxRef.current;
-    ctx.beginPath();
-    ctx.lineWidth = selectTool === "era" ? eraser : width;
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
-    setSnapshot(
-      ctx.getImageData(0, 0, canvasRef.current.width, canvasRef.current.height)
-    );
-  };
+  const startDraw = useCallback(
+    (e) => {
+      setIsDrawing(true);
+      setPrevMouseX(e.nativeEvent.offsetX);
+      setPrevMouseY(e.nativeEvent.offsetY);
+      const ctx = ctxRef.current;
+      ctx.beginPath();
+      ctx.lineWidth = selectTool === "era" ? eraser : width;
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      setSnapshot(
+        ctx.getImageData(
+          0,
+          0,
+          canvasRef.current.width,
+          canvasRef.current.height
+        )
+      );
+    },
+    [color, eraser, selectTool, width]
+  );
 
   const drawing = (e) => {
     if (!isDrawing) return;
     const ctx = ctxRef.current;
     ctx.putImageData(snapshot, 0, 0);
 
-    let newShape;
     if (
       selectTool === "bru" ||
       selectTool === "era" ||
       selectTool === "pci" ||
       selectTool === "pen"
     ) {
-      ctx.strokeStyle = selectTool === "era" ? "#fff" : color;
+      ctx.strokeStyle = selectTool === "era" ? background : color;
       ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
       ctx.stroke();
     } else if (selectTool === "rec") {
-      newShape = drawRect(e);
+      drawRect(e);
     } else if (selectTool === "cir") {
-      newShape = drawCircle(e);
+      drawCircle(e);
     } else if (selectTool === "tri") {
-      newShape = drawTriangle(e);
-    }
-    if (newShape) {
-      setShape([...shape, newShape]);
-      console.log(shape);
+      drawTriangle(e);
     }
   };
   const drawRect = (event) => {
@@ -100,6 +104,8 @@ const Body = () => {
       );
     }
     // ctx.globalAlpha = 0.3
+    // ctx.fillText('Hello, Canvas!', 50, 100);
+    // ctx.strokeText('Hello, Canvas!', 50, 150);
     ctx.fillRect(
       e.offsetX,
       e.offsetY,

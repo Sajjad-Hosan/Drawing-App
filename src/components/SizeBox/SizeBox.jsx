@@ -75,7 +75,7 @@ const SizeBox = () => {
                   onChange={handleWidth}
                   className="ranger mt-3 z-10"
                   defaultValue={num}
-                  max={50}
+                  max={100}
                 />
                 <span className={`font-semibold`}>
                   {num < 10 ? "0" + num : num}

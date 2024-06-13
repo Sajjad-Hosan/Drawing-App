@@ -1,12 +1,12 @@
 import useAuth from "../../hooks/useAuth";
 import { FaPen, FaPencil } from "react-icons/fa6";
 
-const BrushTooltip = () => {
+const BrushTooltip = ({ brush }) => {
   const { selectTool, setSelectTool } = useAuth();
   return (
     <div
       className={`card p-4 flex flex-row gap-3 absolute z-20 right-[6.5rem] ${
-        selectTool === "bru" ? "bottom-12" : "-bottom-[10rem]"
+        brush ? "bottom-12" : "-bottom-[10rem]"
       }`}
     >
       <button

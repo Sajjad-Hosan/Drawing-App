@@ -4,14 +4,14 @@ import {
     RiCircleLine,
     RiTriangleLine,
   } from "react-icons/ri";
-const ShapeTooltip = () => {
+const ShapeTooltip = ({shapes}) => {
   const { selectTool, setSelectTool } = useAuth();
 
   return (
     <>
       <div
         className={`card p-4 flex flex-row gap-3 absolute z-20 right-[10.5rem] ${
-          selectTool === "rec" ? "bottom-12" : "-bottom-[10rem]"
+          shapes ? "bottom-12" : "-bottom-[10rem]"
         }`}
       >
         <button

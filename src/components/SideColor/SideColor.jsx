@@ -38,7 +38,7 @@ const SideColor = () => {
   return (
     <>
       <dialog id="colors" className="modal">
-        <div className="modal-box max-w-2xl h-[20rem]">
+        <div className="modal-box max-w-2xl">
           <div className="flex justify-between items-center">
             <h3 className="font-bold text-lg">Colors</h3>
             <form method="dialog">
@@ -53,7 +53,7 @@ const SideColor = () => {
                 return (
                   <span
                     style={{ background: color }}
-                    className={`h-12 cursor-pointer transition-all duration-150 ${
+                    className={`h-20 cursor-pointer transition-all duration-150 ${
                       current == i ? "rounded-full" : "rounded-md"
                     } ${color === "white" ? "border border-black" : ""}`}
                     onClick={() => {
