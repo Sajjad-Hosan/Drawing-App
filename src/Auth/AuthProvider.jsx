@@ -6,17 +6,28 @@ const AuthProvider = ({ children }) => {
   const fillRef = useRef(null);
   // ------------------------
   const [expend, setExpend] = useState(true);
-  const [color, setColor] = useState(localStorage.getItem("color"));
-  const [background, setBackground] = useState(
-    localStorage.getItem("background")
-  );
+  const [color, setColor] = useState("#000");
+  const [background, setBackground] = useState("#219C90");
   const [selectTool, setSelectTool] = useState("bru");
-  const [fill, setFill] = useState(localStorage.getItem("fill"));
-  const [width, setWidth] = useState(parseInt(localStorage.getItem("stroke")));
-  const [eraser, setErase] = useState(parseInt(localStorage.getItem("eraser")));
+  const [fill, setFill] = useState(false);
+  const [width, setWidth] = useState(14);
+  const [eraser, setErase] = useState(20);
   const [opa, setOpa] = useState(1);
   const [back, setBack] = useState(1);
 
+  window.onload = () => {
+    const width = parseInt(localStorage.getItem("stroke"));
+    const eraser = parseInt(localStorage.getItem("eraser"));
+    const fill = localStorage.getItem("fill");
+    const background = localStorage.getItem("background");
+    const color = localStorage.getItem("color");
+    // -------------------
+    setColor(color);
+    setWidth(width);
+    setErase(eraser);
+    setFill(fill);
+    setBackground(background);
+  };
   useEffect(() => {
     if (selectTool === "bru") {
       setWidth(width);

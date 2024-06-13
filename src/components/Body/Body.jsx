@@ -181,11 +181,11 @@ const Body = () => {
     <>
       <canvas
         ref={canvasRef}
-        className="w-full md:h-[580px] h-full border-2 border-gray-500 z-10 rounded-xl"
+        className="w-full md:h-[545px] h-full border-2 border-gray-500 z-10 rounded-xl"
         onMouseDown={startDraw}
         onMouseMove={drawing}
         onMouseUp={() => setIsDrawing(false)}
-        // onMouseLeave={() => setIsDrawing(false)}
+        onMouseLeave={() => setIsDrawing(false)}
       />
     </>
   );
