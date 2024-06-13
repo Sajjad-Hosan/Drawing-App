@@ -8,8 +8,9 @@ const Navbar = () => {
       <Setting />
       {/* ----------------------- */}
       <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Drawing App</a>
+        <div className="flex-1 p-2 text-xl flex items-center gap-3">
+          <img src="/drawing_logo.png" alt="drawing_app" className="w-8 h-8" />
+          Drawing App
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
