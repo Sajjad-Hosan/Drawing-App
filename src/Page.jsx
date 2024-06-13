@@ -17,8 +17,8 @@ const {expend} = useAuth();
       <SideColor />
       <div className="w-full h-[640px] relative flex-col justify-between overflow-hidden">
         <div
-          className={`absolute z-30 w-full border-b transition-all duration-300 ${
-            expend ? "-top-4" : "-top-32"
+          className={`absolute z-30 w-full transition-all duration-300 ${
+            expend ? "top-0" : "-top-32"
           }`}
         >
           <Navbar />

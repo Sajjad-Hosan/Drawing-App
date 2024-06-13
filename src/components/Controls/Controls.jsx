@@ -1,4 +1,5 @@
 import { FaXmark } from "react-icons/fa6";
+import Cooking from "../Cooking/Cooking";
 
 const Controls = () => {
   return (
@@ -13,13 +14,8 @@ const Controls = () => {
               </button>
             </form>
           </div>
-          <div className="p-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-            sequi et voluptates non impedit cupiditate officiis! Quo nemo nisi
-            error in voluptates? Maiores, maxime. Beatae id odit animi atque
-            sequi ullam perspiciatis natus sed voluptate a delectus nemo nihil
-            quisquam distinctio ipsum dolorem, harum hic laudantium excepturi
-            vel nam. Molestias.
+          <div>
+            <Cooking />
           </div>
         </div>
       </dialog>

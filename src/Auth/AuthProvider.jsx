@@ -1,10 +1,11 @@
 import { createContext, useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const fillRef = useRef(null);
   // ------------------------
-  const [expend, setExpend] = useState(false);
+  const [expend, setExpend] = useState(true);
   const [color, setColor] = useState(localStorage.getItem("color"));
   const [background, setBackground] = useState(
     localStorage.getItem("background")
@@ -70,5 +71,7 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
-
+AuthProvider.propTypes = {
+  children: PropTypes.node,
+};
 export default AuthProvider;

@@ -1,4 +1,5 @@
 import { HiMiniXMark } from "react-icons/hi2";
+import Cooking from "../Cooking/Cooking";
 const Setting = () => {
   return (
     <>
@@ -13,7 +14,9 @@ const Setting = () => {
               </button>
             </form>
           </div>
-          <div className="p-5"></div>
+          <div className="p-5 text-center">
+            <Cooking/>
+          </div>
         </div>
       </dialog>
     </>
